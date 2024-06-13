@@ -1,0 +1,27 @@
+import networkx as nx
+import matplotlib.pyplot as plt
+
+# Create a directed graph
+G = nx.DiGraph()
+
+# Add edges (this will also add nodes)
+edges = [('A', 'B'), ('B', 'C'), ('B', 'D'), ('B', 'E')]
+G.add_edges_from(edges)
+
+# Get the in-degree and out-degree of all nodes
+in_degrees = G.in_degree()
+out_degrees = G.out_degree()
+
+# Print the in-degree and out-degree of each node
+print("Node Degrees:")
+for node in G.nodes():
+    in_degree = in_degrees[node]
+    out_degree = out_degrees[node]
+    print(f'Node {node} has in-degree {in_degree} and out-degree {out_degree}')
+
+# Draw the directed graph
+pos = nx.spring_layout(G)
+nx.draw(G, pos, with_labels=True, node_color='lightblue', edge_color='gray', node_size=2000, font_size=16, font_weight='bold', arrows=True)
+
+# Show the plot
+plt.show()
